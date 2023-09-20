@@ -6,11 +6,11 @@ module.exports = {
   entry: {
     app:'./src/app.js'
   },
-  plugins: [
+ /*  plugins: [
     new HtmlWebpackPlugin({
       title: 'Steak resturant',
     }),
-  ],
+  ], */
   devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
