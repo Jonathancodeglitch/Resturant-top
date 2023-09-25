@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 
 :root{
     --transperent-background: rgba(0,0,0,0.4);
+    --light-dark:rgba(0,0,0,0.8);
     --active:  rgb(255, 72, 0);
 }
+
 /* reset */
 *{
     padding: 0;
@@ -16,15 +20,17 @@ ul{
 }
 
 body{
+  position: relative;
   line-height: 1.2;
   font-family: 'Roboto', sans-serif;
   background: url('./components/home/home-background.jpg');
-  min-height: 100vh;
   width: 100%;
+  min-height: 100vh;
   background-size:cover;
   background-position: center bottom;
   background-repeat: no-repeat;
   background-attachment: fixed;
+  padding-bottom: 100px;
 }
 
 img{
@@ -56,7 +62,7 @@ img{
 header{
     position: fixed;
     padding:20px 0px;
-    background-color: rgba(0,0,0,0.8);
+    background-color:rgba(0,0,0,1);
     top: 0;
     left: 0;
     right: 0;
@@ -104,8 +110,8 @@ header{
         position: absolute;
         right: 0px;
         top: 35px;
-        background-color:rgba(0,0,0,0.7);
-        padding: 20px;
+        background-color:var(--light-dark);
+        padding: 20px 40px 20px 20px;
         gap: 15px;
         padding-right: 50px;
         display: none;
@@ -121,8 +127,8 @@ header{
 /* hero section*/
 
 .hero{
-   /*  flex-wrap: wrap; */
-   flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     margin-top: 120px;
     padding: 30px 20px;
@@ -131,12 +137,12 @@ header{
 }
 
 .hero_content{
-   flex: 1;
+   width: 100%;
+   max-width: 400px;
 }
 
 .hero_text{
-    font-size: clamp(1.7rem,5vh,2.5rem);
-    font-size: 2.2rem;
+    font-size: clamp(1.7rem,7vw,2.5rem);
     font-weight: 700;
     color: white;
     line-height: 1.3;
@@ -151,7 +157,7 @@ header{
     border: none;
     font-weight: 400;
     font-size: 1.2rem;
-    padding:8px 50px;
+    padding:8px 25px;
     margin-top: 20px;
     border-radius: 7px;
     display: inline-block;
@@ -166,9 +172,177 @@ header{
 
 
 .hero_img{
+    max-width: 450px;
     height:280px;
-    flex: 1;
+    width: 100%;
     border-radius:20px;
+}
+
+/* signature dish */
+
+.signature-dish-container{
+   background-color: var(--transperent-background);
+   border-radius: 20px;
+   padding: 30px;
+   margin-top: 90px;
+}
+
+.signature-dish-container h1{
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 700;
+    
+    font-size: clamp(2rem,8vw,3rem);
+}
+
+.grid-container{
+    margin-top: 30px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    grid-template-columns:1fr; 
+    
+}
+
+.signature-dish{
+    background-color: var(--light-dark);
+    padding: 25px;
+    height: 400px;
+}
+
+.signature-dish img{
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 15px;
+  width: 100%;
+  height: 200px;
+}
+
+.dish-name{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffff;
+    text-transform: uppercase;
+}
+
+.ratings{
+    display: flex;
+    align-items: center;
+    margin-top:3px;
+}
+
+.ratings i{
+    color: rgb(255, 187, 0);
+}
+
+.dish-info{
+    margin-top: 8px;
+    font-size: 1.1rem;
+    color: #ffffff;
+    opacity: .70;
+    line-height: .96;
+}
+
+/* menu section*/
+
+.food-menu{
+    margin-top:120px;
+    margin-bottom: 100px;
+    background-color: var(--transperent-background);
+    padding: 60px 40px;
+    color: #fff;
+}
+
+.food-menu h1{
+   font-size: 2.3rem;
+   font-weight: 700;
+   text-align: center;
+}
+
+.food-menu .title{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    margin: 20px 0px;
+    font-family: 'Lobster', cursive;
+    text-align: center;
+}
+
+.items{
+    gap: 15px;
+}
+
+.items + .items{
+    margin-top: 15px;
+}
+
+.items .food-name,
+.items .price{
+   font-size: 1rem;
+   text-transform: capitalize;  
+}
+
+.items .underline{
+    flex: 1;
+    border-bottom: 3px dashed #fff;
+}
+
+/* contact us */
+
+.contact{
+    margin-top: 120px;
+    background-color: var(--transperent-background);
+    padding: 20px 10px;
+    padding-bottom: 60px;
+}
+
+.contact h1{
+    font-size: 2.3rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+}
+
+.contact-info{
+    margin-top: 20px;
+    color: #fff;
+}
+
+.contact-info > *+*{
+   margin-top: 15px;
+}
+
+.contact-info li{
+    gap: 10px;
+    font-size:1.2rem;
+    font-weight: 400;
+}
+
+.contact-info li i{
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--light-dark);
+}
+
+/* footer */
+
+footer{
+    background-color: rgba(0,0,0,1);
+    padding: 20px;
+    position:fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-text{
+    color: #ffff;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: .90rem;
 }
 
 /* desktop view */
@@ -193,13 +367,47 @@ header{
 
     /* hero */
     .hero{
-        justify-content: space-between;
-        flex-direction: row;
         gap: 20px;
+        justify-content: space-between;
     }
 
-    
+    /* signature dish */
+    .grid-container{
+        gap: 30px;
+        grid-template-columns: repeat(auto-fill,300px); 
+    }
 
+    .hero_content{
+        width: 50%;
+        max-width: 400px;
+    }
+
+    .hero_img{
+        width: 40%;
+    }
+
+    /* food menu */
+
+    .items .food-name,
+    .items .price{
+       font-size: 1.3rem;
+       text-transform: capitalize;  
+    }
+
+    /* menu */
+
+    .contact-info li{
+        justify-content: center;
+    }
+
+    /* footer */
+    footer{
+        padding: 30px;
+    }
+
+    .footer-text{
+        font-size: 1.1rem;
+    }
 }
 
 @media(min-width:690px){
@@ -220,7 +428,7 @@ header{
     .hero{
         padding: 30px 45px;
     }
-    
+
 }
 
 @media(min-width:890px){
@@ -236,5 +444,38 @@ header{
         font-size: 1.4rem;
     }
 
-    
+     /* hero */
+    .hero{
+        margin-top: 150px;
+        padding: 40px 60px;
+    }
+
+    /* food menu */
+
+    .food-menu h1{
+        font-size: 2.3rem;
+    }
+
+    .food-menu .title{
+        font-size: 1.7rem;
+    }
+
+    .items .food-name,
+    .items .price{
+    font-size: 1.5rem;
+    text-transform: capitalize;  
+    }
+
+    .items + .items{
+        margin-top: 30px;
+    }
+
+    .food-menu{
+        margin-top:150px;
+    }
+
+    /* contact */
+    .contact{
+        margin-top: 150px;
+    }
 }
