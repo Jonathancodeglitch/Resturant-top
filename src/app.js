@@ -1,43 +1,82 @@
-//import the initial page load funvtion from another module
-//set up your project to use tab browsing to navigate between home,menu,contacts
-//put the content of each tab inside its own module
-//write the tab switching logic inside of the app.js
-
-import './style.css';
-import { menuHtml } from './components/menu/menu';
+import { menuHtml } from './components/menu';
 import homeHtml from './components/home/home';
-import contactHtml from './components/contact/contact';
-import { pageLoad } from './components/pageload';
-
-//on pageload show home page
-pageLoad();
+import contactHtml from './components/contact';
+import { toggleNav } from './components/nav_toggle';
 
 const content = document.getElementById('content');
 
-function switchTabs(e){
-    let target = e.target;
-    let action = target.classList.contains('tab-btn');
-    let main = document.getElementById('main');
-  
-    if (action) {
-      //remove active state from all btn
-      const tabBtns = document.querySelectorAll('[data-id]');
-      tabBtns.forEach((tabBtn) => {
-        tabBtn.classList.remove('active');
-      });
-      //add active state to clicked btn
-      target.classList.add('active');
-  
-      //tab switchimg logic
-      if (target.dataset.id == 'home') {
-        main.innerHTML = homeHtml();
-      } else if (target.dataset.id == 'food-menu') {
-        document.querySelector('[data-id="food-menu"]').classList.add('active');
-        main.innerHTML = menuHtml();
-      } else if (target.dataset.id == 'contact') {
-        main.innerHTML = contactHtml();
-      }
-    }
-}
+//when page load initially
+const onPageLoad = (() => {
+  //display the home page section
+  content.innerHTML = homeHtml();
+  //and make the home btn active
+  const homeBtn = document.querySelector("[data-id='home']");
+  homeBtn.classList.add('active');
+})();
 
-content.addEventListener('click', switchTabs);
+//switch tab logix
+const switchTab = (() => {
+  //contact tab
+  const contactTab = (e) => {
+    let target = e.target;
+    let contactBtn = target.dataset.id;
+
+    if (contactBtn == 'contact') {
+      content.innerHTML = contactHtml();
+      releaseActiveState();
+      //add active state to the current button click
+      document.querySelector("[data-id='contact']").classList.add('active');
+    }
+  };
+
+  //menu tab
+  const menuTab = (e) => {
+    let target = e.target;
+    let menuBtn = target.dataset.id;
+    if (menuBtn == 'food-menu') {
+      content.innerHTML = menuHtml();
+      releaseActiveState();
+      document.querySelector("[data-id='food-menu']").classList.add('active');
+    }
+  };
+
+  //menu tab
+  const homeTab = (e) => {
+    let target = e.target;
+    let menuBtn = target.dataset.id;
+    if (menuBtn == 'home') {
+      content.innerHTML = homeHtml();
+      releaseActiveState();
+      document.querySelector("[data-id='home']").classList.add('active');
+    }
+  };
+
+  return {
+    contactTab,
+    menuTab,
+    homeTab,
+  };
+})();
+
+//release active state from every other nav buttons
+const releaseActiveState = () => {
+  let navBtns = document.querySelectorAll('[data-id]');
+  navBtns.forEach((navBtn) => {
+    navBtn.classList.remove('active');
+  });
+};
+
+/* events */
+console.log(navigation)
+content.addEventListener('click', (e) => {
+  switchTab.homeTab(e);
+  switchTab.contactTab(e);
+  switchTab.menuTab(e);
+  //toggle navigation
+  const navigation = document.querySelectorAll('[data-nav]');
+  navigation.forEach(nav=>{
+    toggleNav(e, nav);
+  })
+ 
+});
+
